@@ -1,0 +1,8 @@
+@url = https://8080-elisakirnew-gamessw2202-ghjizmpvye4.ws-us116.gitpod.io
+
+POST {(url)}/plataformas
+Content-Type: application/json
+
+{
+   "nome" : "Xbox"
+}

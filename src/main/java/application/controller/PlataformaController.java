@@ -4,19 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.ResquestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import application.modal.Plataforma;
-import application.Plataformarepository;
+import application.record.PlataformaDTO;
+import application.repository.PlataformaRepository;
 
 @RestController
 @RequestMapping("/plataformas")
 public class PlataformaController {
     @Autowired
-    private Plataformarepository plataformaRepo;
+    private PlataformaRepository plataformaRepo;
 
     @PostMapping
-    public Plataforma insert(@ResquestBody Plataforma plaforma) {
-        return plataformaRepo.save(plataforma);
+    public PlataformaDTO insert(@RequestBody PlataformaDTO plataforma) {
+       Plataforma nova = plataformaRepo.save(new Plataforma(plataforma));
+        return new PlataformaDTO(nova);
     }
 }
